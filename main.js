@@ -19,6 +19,12 @@ const appa = Vue.createApp({
   methods: {
     addToCart() {
       this.cart += 1;
+    },
+    removeFromCart() {
+      this.cart -= this.cart > 0 ? 1 : 0;      
+    },
+    updateImage(image){
+      this.image = image;
     }
   }
 });
