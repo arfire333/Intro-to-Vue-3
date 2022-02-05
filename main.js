@@ -1,18 +1,24 @@
 const appa = Vue.createApp({
   data() {
     return {
-      product: 'Socks',
-      url: 'https://duckduckgo.com/socks',
-      image: './assets/images/socks_blue.jpg',
-      inventory: 100,
-      onSale: true,
-      details: ['50% cotton','30% wool','20% polyester'],
-      description: 'Something to keep your feet warm!',
+      cart: 0,
+      product: 'Socks',      
+      image: './assets/images/socks_green.jpg',
+      inventory: 100,      
+      details: ['50% Cotton','30% Wool','20% Polyester'],      
       variants: [
-        { id: 2234, color: 'green' },
-        { id: 2235, color: 'blue' },
+        { id: 2234, color: 'Green', image: './assets/images/socks_green.jpg' },
+        { id: 2235, color: 'Blue', image: './assets/images/socks_blue.jpg' },
       ],
-      sizes: ['small', 'medium', 'large']
+      description: 'Something to keep your feet warm!',
+      sizes: ['Small', 'Medium', 'Large'],
+      onSale: true,
+      url: 'https://duckduckgo.com/socks',      
+    }
+  },
+  methods: {
+    addToCart() {
+      this.cart += 1;
     }
   }
 });
