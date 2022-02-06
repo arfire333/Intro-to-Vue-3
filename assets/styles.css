@@ -42,8 +42,9 @@ body {
 
 
 .disabledButton {
-  background-color: #d8d8d8;
+  background-color: #3b3333;
   cursor: not-allowed;
+  visibility: hidden;
 }
 
 h1 {
