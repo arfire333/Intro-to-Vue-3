@@ -3,6 +3,10 @@ app.component('product-display', {
     premium: {
       type: Boolean,
       required: true
+    },
+    'cartEmpty': {
+      type: Boolean,
+      required: true
     }
   },
   template:
@@ -33,18 +37,18 @@ app.component('product-display', {
             <td><button class="button" :class="{disabledButton: cartEmpty }" @click="removeFromCart" :disabled="cartEmpty">Remove One</button> </td>
           </tr>
         </table >
+        </div>               
       </div >
     </div >`,
   data() {
     return {      
       product: 'Socks',
       brand: 'Vue Mastery',
-      selectedVariant: 0,
-      inventory: 11,
+      selectedVariant: 0,      
       details: ['50% Cotton', '30% Wool', '20% Polyester'],
       variants: [
         { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50, onSale: true },
-        { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: false },
+        { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 3, onSale: false },
       ],
       description: 'Something to keep your feet warm!',
       sizes: ['Small', 'Medium', 'Large'],
@@ -53,10 +57,10 @@ app.component('product-display', {
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit('add-to-cart',this.variants[this.selectedVariant].id);
     },
     removeFromCart() {
-      this.cart -= (this.cart > 0 ? 1 : 0);
+      this.$emit('remove-from-cart',this.variants[this.selectedVariant].id);
     },
     updateVariant(index) {
       this.selectedVariant = index;
